@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/enemyquestions/db" VERSION="20120808" COMMENT="XMLDB file for enemy questions module"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="enemyquestions" COMMENT="Indicate which questions should not be chosen together">
+        <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" NEXT="questiona"/>
+        <FIELD NAME="questiona" TYPE="int" LENGTH="16" NOTNULL="true" SEQUENCE="false" PREVIOUS="id" NEXT="questionb"/>
+        <FIELD NAME="questionb" TYPE="int" LENGTH="16" NOTNULL="true" SEQUENCE="false" PREVIOUS="questiona"/>
+    </FIELDS>
+    <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+    </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>

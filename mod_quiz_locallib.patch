@@ -1,0 +1,24 @@
+diff --git a/mod/quiz/locallib.php b/mod/quiz/locallib.php
+index e45d4ac..fa6d53c 100644
+--- a/mod/quiz/locallib.php
++++ b/mod/quiz/locallib.php
+@@ -178,8 +178,18 @@ function quiz_start_new_attempt($quizobj, $quba, $attempt, $attemptnumber, $time
+                 $forcequestionid = $questionids[$quba->next_slot_number()];
+             }
+ 
++            global $DB;
++            list($insql, $inparams) = $DB->get_in_or_equal($questionsinuse);
++            $sql = "SELECT quid FROM (
++                    (SELECT questionb AS quid FROM {enemyquestions}, {quiz_slots} WHERE questiona=questionid AND quizid=:quizida)
++                    UNION
++                    (SELECT questiona AS quid FROM {enemyquestions}, {quiz_slots} WHERE questionb=questionid AND quizid=:quizidb)
++                    ) AS enemies";
++            $enemyquestions = $DB->get_fieldset_sql("SELECT questionb FROM {enemyquestions} WHERE questiona $insql", $inparams);
++            $exclude = array_merge($questionsinuse, $enemyquestions);
++
+             $question = question_bank::get_qtype('random')->choose_other_question(
+-                $questiondata, $questionsinuse, $quizobj->get_quiz()->shuffleanswers, $forcequestionid);
++                $questiondata, $exclude, $quizobj->get_quiz()->shuffleanswers, $forcequestionid);
+             if (is_null($question)) {
+                 throw new moodle_exception('notenoughrandomquestions', 'quiz',
+                                            $quizobj->view_url(), $questiondata);
