@@ -14,8 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-$plugin->version   = 2015013001;
-$plugin->release   = '2.2.7';
+$plugin->version   = 2015021001;
+$plugin->release   = '1.0';
 $plugin->maturity  = MATURITY_ALPHA;
 $plugin->requires  = 2011120500;
 $plugin->component = 'local_enemyquestions';

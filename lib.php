@@ -31,3 +31,4 @@ function local_enemyquestions_get_question_bank_search_conditions($caller) {
     );
 }
 
+// case FEATURE_BACKUP_MOODLE2:          return true;
