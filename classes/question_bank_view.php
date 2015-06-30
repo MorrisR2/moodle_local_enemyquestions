@@ -26,7 +26,8 @@ class local_enemyquestions_question_bank_view extends core_question\bank\view {
                                      'local_enemyquestions_existing_enemy_column',
                                      'question_name_column',
                                      'preview_action_column',
-                                     'modifier_name_column');
+                                     'modifier_name_column',
+                                     'local_categorycolumn_question_bank_column');
         if (question_get_display_preference('qbshowtext', 0, PARAM_BOOL, new \moodle_url(''))) {
             $questionbankcolumns[] = 'question_text_row';
         }
