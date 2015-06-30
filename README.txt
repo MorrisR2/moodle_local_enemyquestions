@@ -1,6 +1,6 @@
-Allows the user to mark pairs of questions as "enemy questions" -
-if Question A is chosen for a quiz, don't allow Question B to also
-be chosen, either manually or randomly.
+local/enemyquestions allows the user to mark pairs of questions as "enemy questions" -
+if Question A is chosen for a quiz, don't allow Question B to also be chosen,
+either manually or randomly.
 
 Use cases include variations on essentially the same question, and
 questions which might reveal the answer to another question.
